@@ -1,5 +1,7 @@
-# -*- coding: utf-8 -*-
+import warnings
 
-__version__ = "1.5.18"
+from .base import CvedbApiError
+from .vscanner import VScannerApi
+from .cvedb import Cvedb, CvedbApi
 
-from cvedb.api import Cvedb
+warnings.simplefilter("always", DeprecationWarning)
