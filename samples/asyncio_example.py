@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 import asyncio
-import multiprocessing
 import functools
-import cvedb
-from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import multiprocessing
+from concurrent.futures import ThreadPoolExecutor
 
+import cvedb
 
 cvedb_api = cvedb.Cvedb(api_key="YOUR_API_KEY_HERE")
 
@@ -15,16 +15,16 @@ pool = ThreadPoolExecutor(max_workers=multiprocessing.cpu_count())
 
 
 async def get_collection():
-    print('Get collections')
+    print("Get collections")
     # using default executor
     return await loop.run_in_executor(None, cvedb_api.collections)
 
 
 async def search(query, **kwargs):
     # run using own executor
-    print('Run search `%s`.' % query)
+    print("Run search `%s`." % query)
     ret = await loop.run_in_executor(pool, functools.partial(cvedb_api.search, query, **kwargs))
-    print('Searching `%s` done.' % query)
+    print("Searching `%s` done." % query)
     return ret
 
 
