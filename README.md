@@ -1,4 +1,4 @@
-# [Cvedb API v3](https://cvedb.github.io) Python wrapper
+# [CVEDB API v3](https://cvedb.github.io) Python wrapper
 
 
 # Description
